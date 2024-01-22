@@ -1,0 +1,10 @@
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_can_04.realined.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_min_18.final.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_09.realined.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_12.realined.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_27.realined.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_29.realined.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_b1.final.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_b2.final.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_em.final.bam
+/media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_sub_11.final.bam
