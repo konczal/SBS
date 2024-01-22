@@ -1,11 +1,11 @@
 ##Spoon-billed sanpiper (SBS) genome project
-##ANGSD-based analyses to calculate heterzygosity and density pf SNPs for SBS and for its sister species Red-necked stint (RNS)
-##(c) Mateusz Konczal 2021 (mateusz.konczal@amu.edu.pl)
-
+##ANGSD-based analyses to calculate heterzygosity and density pf SNPs for Spoon-billed sandpiper (SBS) and for its sister species Red-necked stint (RNS)
+## Mateusz Konczal 2021 (mateusz.konczal@amu.edu.pl)
 
 ##########################################
 ##ESTIMATE EXPECTED DEPTH PER INDIVIDUAL##
 ##########################################
+mdkir 02_angsd_HET
 cd 02_angsd_HET
 
 ##Required files:
@@ -55,7 +55,7 @@ mkdir  TestDPdistr #creating dirs is commented in this script, mostly beasue it 
 #C_ruf_12        4       10      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_ruf_12.final.merged.bam
 #######################################################################################################################
 
-#The same analyses were made for "aditional files" 
+#The same analyses were made for "aditional files" that were excluded from some of the amalyses
 
 ###########################################
 ##GENOME WIDE HETERZYGOSITY IN WINDOWS#####
@@ -82,10 +82,11 @@ cd ..
 ###########################################
 ##SNP CALLING FOR SBS AND RNS##############
 ###########################################
+mkdir 03_angsd_SNPcalling
 cd 03_angsd_SNPcalling
 
 ##test coverage in the same way as above, but for joint bam files (within SBS and within RNS)
-#mkdir SBS_DPdistr RNS_DPdistr
+mkdir SBS_DPdistr RNS_DPdistr
 
 #scaffold1 (done for scaffolds1..5, and separetly for SBS and RNS)
 BAMS=Cpyg_bams.txt
@@ -102,7 +103,7 @@ BAMS=Cpyg_bams.txt
 ###############################
 
 ###SBS#####
-#mkdir SBS_SNPs
+mkdir SBS_SNPs
 
 ##Calling all sites (variable and invariable) meeting calling criteria
 ~/Software/angsd/angsd/angsd -P 4 -bam Cpyg_bams.txt -ref $GENOME -out SBS_SNPs/SBS_AllSites \
@@ -119,7 +120,7 @@ BAMS=Cpyg_bams.txt
         -GL 1  -doMaf 1 -doMajorMinor 1 -dopost 1 -doBcf 1 -SNP_pval 1e-6
 
 ###RNS####
-#mkdir RNS_SNPs
+mkdir RNS_SNPs
 
 ##Calling all sites (variable and invariable) meeting calling criteria
 ~/Software/angsd/angsd/angsd -P 4 -bam Cruf_bams.txt -ref $GENOME -out RNS_SNPs/RNS_AllSites \
@@ -140,10 +141,11 @@ cd ..
 ###########################################
 ##IDENTIFICATION NSYN-SYN SITES AND SNPS###
 ###########################################
+mkdir 04_nonsyn_syn_Sites
 cd 04_nonsyn_syn_Sites
 
 #Creating required directories and files
-#mkdir Scaffolds Codons Proteins GFF3 VCF EffectiveCodons tmp
+mkdir Scaffolds Codons Proteins GFF3 VCF EffectiveCodons tmp
 
 #split fasta into files
 cd Scaffolds
