@@ -55,7 +55,7 @@ mkdir  TestDPdistr #creating dirs is commented in this script, mostly beasue it 
 #C_ruf_12        4       10      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_ruf_12.final.merged.bam
 #######################################################################################################################
 
-
+#The same analyses were made for "aditional files" 
 
 ###########################################
 ##GENOME WIDE HETERZYGOSITY IN WINDOWS#####
