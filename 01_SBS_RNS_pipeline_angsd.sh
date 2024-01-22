@@ -148,12 +148,13 @@ cd 04_nonsyn_syn_Sites
 mkdir Scaffolds Codons Proteins GFF3 VCF EffectiveCodons tmp
 
 #split fasta into files
+#./SBS_final.scaffolds_names.fasta file has modified seq. names that include only scaffold number without information about size
 cd Scaffolds
 python ../../Scripts/SplitFasta.py ../SBS_final.scaffolds_names.fasta
 cd ..
 
 ##REQUIRED LINK TO THE ANNOTATION FILE IN GFF3 FORMAT
-GFF=E.pygmeus.evm.consensus.1c.gff3
+GFF=~/00_Data/Annotation/E.pygmeus.evm.consensus.1c.gff3
 cut -f 1 $GFF | sort | uniq > Scaffold_with_genes.txt
 
 #split gff into files
