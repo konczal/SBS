@@ -304,6 +304,7 @@ cd ..
 ####################
 ###NUMBER OF SNPs###
 sh Scripts/GetStats_VCF.sh 04_nonsyn_syn_Sites/SNPsInCodons_SBS_names.ANNOTATED.vcf SBS
+
 #SBS     misense_variants         18253
 #SBS     synonymous_variants      39600
 #SBS     stop_gained_variants     284
