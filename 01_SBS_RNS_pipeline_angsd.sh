@@ -168,6 +168,9 @@ while read r1 ; do
 
 
 #Get callable sites and limit codons only to those that are present in vcf file (all 3 bases)
+#Scaffold_names_dict.txt - text file with names of scaffolds corresponding to two fasta files (that is redundant and should have been avoided), e.g.:
+#scaffold1|size10631746  scaffold1
+
 while read r1 r2 ; do
         bcftools view ../03_angsd_SNPcalling/SBS_SNPs/SBS_AllSites.bcf $r1 > VCF/$r2.vcf
         python ../Scripts/GetEffectiveCodons.py Codons/$r2.txt VCF/$r2.vcf > EffectiveCodons/${r2}_effCod.txt ; done < Scaffold_names_dict.txt
@@ -192,11 +195,12 @@ for f in EffectiveCodons_nonredundant/* ; do python Count_NonsynSynSites.py $f ;
 ##################################################################################
 ####Get VCF with SNPs within effective codons
 #mkdir VCF_SNPs VCF_SNPsINcodons
+
 while read r1 r2; do
         bcftools view ../03_angsd_SNPcalling/SBS_SNPs/SBS_SNPs.bcf $r1 > VCF_SNPs/$r2.vcf ; done < Scaffold_names_dict.txt
 
 while read r1; do
-python GetVCF.py EffectiveCodons_nonredundant/${r1}_effCod.txt_nonred.txt VCF_SNPs/${r1}.vcf > VCF_SNPsINcodons/${r1}_SNPs.vcf ;done < EffectiveCodons_Scaffolds.txt
+        python GetVCF.py EffectiveCodons_nonredundant/${r1}_effCod.txt_nonred.txt VCF_SNPs/${r1}.vcf > VCF_SNPsINcodons/${r1}_SNPs.vcf ; done < EffectiveCodons_Scaffolds.txt
 
 
 grep "^#" VCF_SNPsINcodons/scaffold1_SNPs.vcf > header.vcf
