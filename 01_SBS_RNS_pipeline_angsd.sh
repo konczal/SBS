@@ -188,10 +188,11 @@ for f in * ; do sort $f | uniq  > ../EffectiveCodons_nonredundant/${f}_nonred.tx
 cd ..
 
 #Coun effective number of nonsyn and syn sites per scaffold
-for f in EffectiveCodons_nonredundant/* ; do python Count_NonsynSynSites.py $f ; done  > EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt
+for f in EffectiveCodons_nonredundant/* ; do python ../Scripts/Count_NonsynSynSites.py $f ; done  > EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt
+gzip -c EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt > ../Results/EffectiveCodonsCounts.txt.gz
 
 ###########04_nonsyn_syn_Sites####################################################
-##IMPORTANT RESULT FOR SBS: EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt
+##EFFECTIVE CODONS FOR SBS: ./Results/EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt.gz
 ##################################################################################
 ####Get VCF with SNPs within effective codons
 #mkdir VCF_SNPs VCF_SNPsINcodons
@@ -200,7 +201,7 @@ while read r1 r2; do
         bcftools view ../03_angsd_SNPcalling/SBS_SNPs/SBS_SNPs.bcf $r1 > VCF_SNPs/$r2.vcf ; done < Scaffold_names_dict.txt
 
 while read r1; do
-        python GetVCF.py EffectiveCodons_nonredundant/${r1}_effCod.txt_nonred.txt VCF_SNPs/${r1}.vcf > VCF_SNPsINcodons/${r1}_SNPs.vcf ; done < EffectiveCodons_Scaffolds.txt
+        python ../Scripts/GetVCF.py EffectiveCodons_nonredundant/${r1}_effCod.txt_nonred.txt VCF_SNPs/${r1}.vcf > VCF_SNPsINcodons/${r1}_SNPs.vcf ; done < EffectiveCodons_Scaffolds.txt
 
 ##Here we are getting all the SBS SNPs within effective codons:
 grep "^#" VCF_SNPsINcodons/scaffold1_SNPs.vcf > header.vcf
@@ -209,17 +210,21 @@ cat header.vcf SNPs.vcf > SNPsInCodons_SBS.vcf
 rm header.vcf SNPs.vcf
 
 #Change scafofld names in the vcf file: 
-python modifyVCF.py SNPsInCodons_SBS.vcf > SNPsInCodons_SBS_names.vcf
+python ../Scripts/modifyVCF.py SNPsInCodons_SBS.vcf > SNPsInCodons_SBS_names.vcf
+
+##snpEff annotation:
 java -Xmx12g -jar ~/Software/SnpEff/snpEff/snpEff.jar SBS SNPsInCodons_SBS_names.vcf > SNPsInCodons_SBS_names.ANNOTATED.vcf
+gzip -c SNPsInCodons_SBS_names.ANNOTATED.vcf > ../Results/SNPsInCodons_SBS_names.ANNOTATED.vcf.gz
 
 ###########04_nonsyn_syn_Sites####################################################
-##IMPORTANT RESULT FOR SBS: SNPsInCodons_SBS_names.ANNOTATED.vcf
+##SNP RESULT FOR SBS: ./Results/SNPsInCodons_SBS_names.ANNOTATED.vcf.gz
 ##################################################################################
 
 cd ..
 ###############################################
 ##IDENTIFICATION NSYN-SYN SITES AND SNPS RNS###
 ###############################################
+mkdir 05_nonsyn_syn_Sites_RNS
 cd 05_nonsyn_syn_Sites_RNS
 
 #Steps are analagous to those given above for SBS
