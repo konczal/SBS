@@ -13,7 +13,8 @@ GENOME=/media/raid/home/mkonczal/Projects/SBS_2021/00_data/genome/SBS_final.scaf
 BAMfiles=All_bams.txt                                                                        #txt file with all bam files
 
 ##Output dir:
-mkdir  TestDPdistr #creating dirs is commented in this script, mostly beasue it is not fully autmated script
+#creating dirs is commented in this script, mostly beasue it is not fully autmated script
+mkdir  TestDPdistr 
 
 #scaffold1-5 
 ~/Software/angsd/angsd/angsd -P 4 -bam $BAMfiles -ref $GENOME -out TestDPdistr/scaffold1.qc -r 'scaffold1|size10631746' \
@@ -55,7 +56,7 @@ mkdir  TestDPdistr #creating dirs is commented in this script, mostly beasue it 
 #C_ruf_12        4       10      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_ruf_12.final.merged.bam
 #######################################################################################################################
 
-#The same analyses were made for "aditional files" that were excluded from some of the amalyses
+#The same analyses were made for "aditional files" - files that were excluded from some of the amalyses
 
 ###########################################
 ##GENOME WIDE HETERZYGOSITY IN WINDOWS#####
