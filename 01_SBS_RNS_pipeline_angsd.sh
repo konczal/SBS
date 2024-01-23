@@ -202,12 +202,13 @@ while read r1 r2; do
 while read r1; do
         python GetVCF.py EffectiveCodons_nonredundant/${r1}_effCod.txt_nonred.txt VCF_SNPs/${r1}.vcf > VCF_SNPsINcodons/${r1}_SNPs.vcf ; done < EffectiveCodons_Scaffolds.txt
 
-
+##Here we are getting all the SBS SNPs within effective codons:
 grep "^#" VCF_SNPsINcodons/scaffold1_SNPs.vcf > header.vcf
 grep -v "^#" VCF_SNPsINcodons/scaffold* > SNPs.vcf
 cat header.vcf SNPs.vcf > SNPsInCodons_SBS.vcf
 rm header.vcf SNPs.vcf
 
+#Change scafofld names in the vcf file: 
 python modifyVCF.py SNPsInCodons_SBS.vcf > SNPsInCodons_SBS_names.vcf
 java -Xmx12g -jar ~/Software/SnpEff/snpEff/snpEff.jar SBS SNPsInCodons_SBS_names.vcf > SNPsInCodons_SBS_names.ANNOTATED.vcf
 
