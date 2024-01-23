@@ -445,7 +445,7 @@ cd 11_RareSNPsPerGenome
 mkdir AncestralMajor  RNS  SBS
 cd AncestralMajor
 
-###Clreate reference with major alleles in fasta sequence
+###Create reference with major alleles in fasta sequence
 ###It is done based on the previously generated SNPcalling that include information about allele frequeinces in each site
 
 #Creat a link to such file for SBS
