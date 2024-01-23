@@ -228,7 +228,8 @@ mkdir 05_nonsyn_syn_Sites_RNS
 cd 05_nonsyn_syn_Sites_RNS
 
 #Steps are analagous to those given above for SBS
-#All the analyses are summarized in the file RUNMErns.sh
+#All the analyses are summarized in the file 02_RUNMErns.sh
+sh ../02_RUNMErns.sh
 
 ###########05_nonsyn_syn_Sites_RNS################################################
 ##IMPORTANT RESULT FOR RNS: EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt
