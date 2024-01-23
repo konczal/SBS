@@ -272,7 +272,7 @@ python ../Scripts/modifyScafNames.py SynSites.Uniq.Sites > SynSites.Uniq.Names.S
 
 
 ##RUN HET
-#mkdir NonSynHet SynHet
+mkdir NonSynHet SynHet
 
 while read r1 r2 r3 r4; do
         mkdir NonSynHet/$r1
@@ -293,7 +293,6 @@ while read r1 r2 r3 r4; do
         ~/Software/angsd/angsd/misc/realSFS  SynHet/$r1/$r1.saf.idx  >   SynHet/$r1/${r1}_est2.ml ; done   < MaxDpPersample.txt
 
 #_est2.ml files are SFS, which for a diploid sample gives number of heterzygous and both homozygous positions. It can be easly used to calculate heterozygosity
-
 
 cd ..
 
