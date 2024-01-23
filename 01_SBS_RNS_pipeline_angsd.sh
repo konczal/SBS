@@ -232,26 +232,26 @@ cd 05_nonsyn_syn_Sites_RNS
 sh ../02_RUNMErns.sh
 
 ###########05_nonsyn_syn_Sites_RNS################################################
-##IMPORTANT RESULT FOR RNS: EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt
-##IMPORTANT RESULT FOR RNS: SNPsInCodons_RNS_names.ANNOTATED.vcf
+##RESULT FOR RNS: ./Results/EffectiveCodonsCounts.txt.gz
+##RESULT FOR RNS: ./REsults/SNPsInCodons_RNS_names.ANNOTATED.vcf.gz
 ##################################################################################
 
 cd ../
 ###########################################
 ##CALCULATING HETEROZGOSITY IN NSYN-SYN####
 ###########################################
+mkdir 06_HETnsyn_SBS
 cd 06_HETnsyn_SBS/
 
 ln -s ../04_nonsyn_syn_Sites/ .
 ls Codons > Scaffolds.txt
-#mkdir NonsynSites
-while read r1; do
-python ../Scripts/GetEffNonsynPos.py Codons/$r1 > NonsynSites/$r1  ;done < Scaffolds.txt
 
+mkdir NonsynSites
+while read r1; do
+        python ../Scripts/GetEffNonsynPos.py Codons/$r1 > NonsynSites/$r1  ; done < Scaffolds.txt
 
 
 ln -s ../02_angsd_HET/MaxDpPersample.txt .
-
 
 ##Heterozygosity is calculated only in fourfold degenerate sites (e.g. synonymous variation) and in non-degenerate sites (e.g. missense substitutions)
 awk '$2 == 1.0 {print FILENAME "\t" $0}'  NonsynSites/* | sed 's|NonsynSites/||g' |  sed 's/.txt//g' | cut -f 1,2 > NonSynSites.Sites
