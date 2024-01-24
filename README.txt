@@ -1,1 +1,2 @@
-This is a reposity of code used for analysing the Spoon-billed sandpiper genomes 
+This is a reposity of code used for population genetic analyses of the spoon-billed sandpiper and red-necked stint genomes. 
+
