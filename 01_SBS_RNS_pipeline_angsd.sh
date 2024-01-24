@@ -1,5 +1,5 @@
 ##Spoon-billed sanpiper (SBS) genome project
-##ANGSD-based analyses to calculate heterzygosity and density pf SNPs for Spoon-billed sandpiper (SBS) and for its sister species Red-necked stint (RNS)
+##ANGSD-based analyses to calculate heterzygosity and density of SNPs for Spoon-billed sandpiper (SBS) and for its sister species Red-necked stint (RNS)
 ## Mateusz Konczal 2021 (mateusz.konczal@amu.edu.pl)
 
 ##########################################
@@ -9,14 +9,16 @@ mdkir 02_angsd_HET
 cd 02_angsd_HET
 
 ##Required files:
-GENOME=/media/raid/home/mkonczal/Projects/SBS_2021/00_data/genome/SBS_final.scaffolds.fasta  #reference genome
-BAMfiles=All_bams.txt                                                                        #txt file with all bam files
+#reference genome
+GENOME=/media/raid/home/mkonczal/Projects/SBS_2021/00_data/genome/SBS_final.scaffolds.fasta  
 
-##Output dir:
-#creating dirs is commented in this script, mostly beasue it is not fully autmated script
+#txt file with all bam files
+BAMfiles=../All_bams.txt                                                                        
+
+##Output dir
 mkdir  TestDPdistr 
 
-#scaffold1-5 
+#Analyses for scaffolds 1-5 
 ~/Software/angsd/angsd/angsd -P 4 -bam $BAMfiles -ref $GENOME -out TestDPdistr/scaffold1.qc -r 'scaffold1|size10631746' \
         -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
         -doQsDist 1 -doDepth 1 -doCounts 1 -maxDepth 500
@@ -33,10 +35,10 @@ mkdir  TestDPdistr
         -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
         -doQsDist 1 -doDepth 1 -doCounts 1 -maxDepth 500
 
-##To get expected values I used this Scripts/getMaxMinPerSample.R
+##To get expected values I used  ../Scripts/getMaxMinPerSample.R
 ##It calculates mean Coverage per bam file, min and max thresholds (minCoverage = max(4, meanCoverage/2); maxCoverage = ifelse(MeanCoverage >20.0, MeanCoverage*2, MeanCoverage*3) )
 
-##RESULT: Results/MaxDpPersample.txt; cols: ID, minCov, maxCov, path to bam file
+##RESULTS are wrriten to Results/MaxDpPersample.txt; cols: ID, minCov, maxCov, path to bam file
 #######################################################################################################################
 #C_pyg_11        4       26      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_11.realined.bam
 #C_pyg_13        4       23      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_pyg_13.realined.bam
@@ -56,13 +58,14 @@ mkdir  TestDPdistr
 #C_ruf_12        4       10      /media/raid/home/mkonczal/Projects/SBS_2021/00_data/bams/C_ruf_12.final.merged.bam
 #######################################################################################################################
 
-#The same analyses were made for "aditional files" - files that were excluded from some of the amalyses
+#The same analyses were made for "aditional files" - files that were excluded from some of the analyses based on previous results
 
 ###########################################
 ##GENOME WIDE HETERZYGOSITY IN WINDOWS#####
 ###########################################
 
 MAXDP=../Results/MaxDpPersample.txt
+mkdir TestHetWholeGenome
 
 while read r1 r2 r3 r4; do
         mkdir TestHetWholeGenome/$r1 
@@ -76,7 +79,7 @@ while read r1 r2 r3 r4; do
         ~/Software/angsd/angsd/misc/thetaStat do_stat  TestHetWholeGenome/$r1/$r1.thetas.idx  -win 20000 -step 20000  -outnames TestHetWholeGenome/$r1/$r1.ThetaWindows.gz ; done  < ${MAXDP}
 
 #output with hets in windows, for example: 02_angsd_HET/TestHetWholeGenome/C_pyg_11/C_pyg_11.ThetaWindows.gz.pestPG
-#the same analyses were made for other samples, not included in the main text
+#the same analyses were made for other samples, not included in the main text (based on ./Results/MaxDpPersample_Additional.txt
 
 cd ..
 
@@ -195,7 +198,8 @@ gzip -c EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt > ../Results/Effe
 ##EFFECTIVE CODONS FOR SBS: ./Results/EffectiveCodons_nonredundant/EffectiveCodonsCounts.txt.gz
 ##################################################################################
 ####Get VCF with SNPs within effective codons
-#mkdir VCF_SNPs VCF_SNPsINcodons
+
+mkdir VCF_SNPs VCF_SNPsINcodons
 
 while read r1 r2; do
         bcftools view ../03_angsd_SNPcalling/SBS_SNPs/SBS_SNPs.bcf $r1 > VCF_SNPs/$r2.vcf ; done < Scaffold_names_dict.txt
@@ -363,7 +367,7 @@ awk '{sum+=$2;} END{print sum;}' 05_nonsyn_syn_Sites_RNS/EffectiveCodons_nonredu
 #############################
 ##HETERZYGOSITY PER SAMPLE###
 
-##Heterzygosity based on fourfold degenerate sites
+##Heterzygosity based on fourfold degenerated sites
 while read r1 r2 ; do python Scripts/SummarizeHet.py 06_HETnsyn_SBS/SynHet/$r1/${r1}_est2.ml $r1 ; done < 06_HETnsyn_SBS/MaxDpPersample.txt
 #Sample Heterozygosity  Number_heterozygous_sites
 #C_pyg_11        0.002216        8446.07
