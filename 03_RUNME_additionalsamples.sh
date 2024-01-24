@@ -73,6 +73,8 @@ while read r1 r2 ; do python ../Scripts/SummarizeHet.py NonSynHet/$r1/${r1}_est2
 #C_pyg_29        0.000513        8698.49
 #C_pyg_b1        0.000559        9901.04
 #C_pyg_b2        0.000641        11585.69
+
+cd ..
 #C_pyg_em        0.000576        10323.4
 #C_sub_11        0.000537        866.07
 
