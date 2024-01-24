@@ -435,10 +435,8 @@ grep -v "missense_" 05_nonsyn_syn_Sites_RNS/SNPsInCodons_RNS_names.ANNOTATED.vcf
 
 ###Aditional SBS samples, plus Cruf and C minuta/subminuta estimates###
 
-##TODO:
-#!!!!#
-##see 07_HETnsyn_SBSadditionalSamples/RUME.sh file##
-#!!!!#
+sh 03_RUNME_additionalsamples.sh
+##see 03_RUNME_additionalsamples.sh for details and results of heterozygosity. 
 
 
 ######################
@@ -459,13 +457,13 @@ zcat SBS_freqs.mafs.gz > SBS_freqs.mafs
 
 ##use simple python script to replace sites
 ##this script has absolute specific paths to files, so each time it has to be updated, if used on other machines
-python ReplaceNuclotFasta.py
+python ../../Scripts/ReplaceNuclotFasta.py
 rm SBS_freqs.mafs
 
 ##do the same for RNS
 ln -s ../../03_angsd_SNPcalling/RNS_freqs/RNS_freqs.mafs.gz .
 zcat RNS_freqs.mafs.gz > RNS_freqs.mafs
-python ReplaceNuclotFasta_RNS.py
+python ../../Scripts/ReplaceNuclotFasta_RNS.py
 rm RNS_freqs.mafs
 
 
