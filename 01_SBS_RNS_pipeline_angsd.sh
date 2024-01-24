@@ -257,7 +257,7 @@ while read r1; do
 
 ln -s ../02_angsd_HET/MaxDpPersample.txt .
 
-##Heterozygosity is calculated only in fourfold degenerate sites (e.g. synonymous variation) and in non-degenerate sites (e.g. missense substitutions)
+##Heterozygosity is calculated only in fourfold degenerate sites (e.g. here synonymous variation) and in zerofold-degenerated sites (e.g. here nonsynonymous sites)
 awk '$2 == 1.0 {print FILENAME "\t" $0}'  NonsynSites/* | sed 's|NonsynSites/||g' |  sed 's/.txt//g' | cut -f 1,2 > NonSynSites.Sites
 awk '$2 == 0.0 {print FILENAME "\t" $0}'  NonsynSites/* | sed 's|NonsynSites/||g' |  sed 's/.txt//g' | cut -f 1,2 > SynSites.Sites
 
@@ -387,7 +387,7 @@ while read r1 r2 ; do python Scripts/SummarizeHet.py 06_HETnsyn_SBS/SynHet/$r1/$
 #C_ruf_09        0.004787        13660.61
 #C_ruf_12        0.004157        7801.19
 
-##Heterzygosity based on non-degenerate sites
+##Heterzygosity based on zerofold-degenerated sites
 while read r1 r2 ; do python Scripts/SummarizeHet.py 06_HETnsyn_SBS/NonSynHet/$r1/${r1}_est2.ml $r1 ; done < 06_HETnsyn_SBS/MaxDpPersample.txt
 #C_pyg_11        0.000534        8418.81
 #C_pyg_13        0.000572        8499.95
@@ -435,6 +435,7 @@ grep -v "missense_" 05_nonsyn_syn_Sites_RNS/SNPsInCodons_RNS_names.ANNOTATED.vcf
 
 ###Aditional SBS samples, plus Cruf and C minuta/subminuta estimates###
 
+##TODO:
 #!!!!#
 ##see 07_HETnsyn_SBSadditionalSamples/RUME.sh file##
 #!!!!#
