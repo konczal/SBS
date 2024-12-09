@@ -1,1 +1,2 @@
-This directory should contain all the input files used in the analyses, including bam files and annotaiton files. 
+This directory contain the input files used in the analyses:
+- annotaiton file. 
