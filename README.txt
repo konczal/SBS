@@ -1,6 +1,10 @@
 This is a reposity of code used for population genetic analyses of the spoon-billed sandpiper and red-necked stint genomes. 
 
-00_Data directory contains gene annotaion file. 
+00_Data directory contains gene annotaion file and reference genome used for the analyses.
 
-Other files that should be added to this directory include refenrece genome (NCBI assembly: ASM369795v1) and bam files, that are based on the raw sequencing reads (NCBI Bioproject: PRJNA419629 ) mapped to the reference genome. 
+01_snp directory contains files unsed for calling SNPs and calculate heterozygosity using bcftools/vcftools.
 
+02_angsd contains scrits used to calculate stats based on analyses with angsd. 
+
+
+The refenrece genome is now available at the NCBI (NCBI assembly: ASM369795v1) and population genomic analyses are based on the samples availble from the NCBI Bioproject: PRJNA419629. 
