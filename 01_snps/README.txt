@@ -1,4 +1,10 @@
-Scripts used to analize SNPs called and filtered using original bcftools pipeline. The scrits were run on the cluster using qsub.
+Scripts used to call and filter SNPs using an original bcftools pipeline. The scrits were run on the institutional cluster with qsub system.
 
-00_SNP_calling_wraper.sh  - defines all required files and execute SNP calling in windows along the genome
-SNP_calling_chunks.sh     - 
+00_SNP_calling_wraper.sh  - defines all required files, some parameters and runs in parallel SNP calling in windows along the genome
+SNP_calling_chunks.sh     - calls SNPs in windows 
+SNP_merge                 - merges all produced vcf files into a single one
+
+
+runBEAGLE_sepPOP.sh          - script used to impute genotopes to some of the analyses 
+
+
