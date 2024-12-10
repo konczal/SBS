@@ -2,7 +2,7 @@ This is a reposity of code used for population genetic analyses of the spoon-bil
 
 00_Data directory contains gene annotaion file and reference genome used for the analyses.
 
-01_snps directory contains files unsed for calling SNPs using bcftools and calculate population genetic analyses.
+01_snps directory contains files unsed for  SNP calling with bcftools and subsequent population genetic analyses.
 
 02_angsd contains scrits used to call SNPs and calculate stats based on analyses with angsd. 
 
