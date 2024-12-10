@@ -7,6 +7,7 @@ SNP_calling_chunks.sh     - calls SNPs in windows
 SNP_merge.sh              - merges all produced vcf files into a single one
 FilterAndNormalize.sh     - fitlers and normizlizes SNPs 
 runBEAGLE_sepPOP.sh       - script used to impute genotopes for some of the analyses 
+annotateSNPs.sh           - annotate SNPs with snpEff and protein coding annotation
 
 02_Admixture.sh           - filters vcf and run admixture
 
