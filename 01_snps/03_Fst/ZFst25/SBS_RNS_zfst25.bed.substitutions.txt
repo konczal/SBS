@@ -1,3 +1,4 @@
+scaffold  start  end  SBSsubstit.  RNSsubstit.
 scaffold1|size10631746	8750001	8775000	99	91
 scaffold1|size10631746	10375001	10400000	76	83
 scaffold1|size10631746	10400001	10425000	42	66
