@@ -10,5 +10,7 @@ runBEAGLE_sepPOP.sh       - script used to impute genotopes for some of the anal
 
 02_Admixture.sh           - filters vcf and run admixture
 
+03_Fst                    - scripts to calculate Fst and ZFst outliers and GO enrtichment analyses 
 
+04_psmc                   - scripts used to run psmc analyses 
 
