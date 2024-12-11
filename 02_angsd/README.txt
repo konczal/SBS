@@ -1,1 +1,3 @@
 These directory contains scirpts used for calling genotype likelihoods and calculating number of polimorphic sites, polimorphism densitites and heterozygosity. Step by step process is shown in 01_SBS_RNS_pipeline_angsd.sh file. This file is not self-executable, but it shows all the commands and results together with required comments. Similar analayses for other samples were run with commands from 02_RUNMErns.sh and 03_RUNME_addinalsample.sh files. 
+
+Reference genome and its annotation are provided in the ../00_Data directory and bam files were generated from samples downloaded from PRJNA419629 NCBI BioProject. 
