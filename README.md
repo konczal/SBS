@@ -1,4 +1,4 @@
-# Population Genomic Analyses Repository
+# Population genomics of the critically endangered spoon-billed sandpiper
 
 This repository contains code for population genomic analyses of the spoon-billed sandpiper and red-necked stint genomes.
 
