@@ -1,6 +1,3 @@
-Here’s the improved version formatted in Markdown:
-
-```markdown
 # Population Genomic Analyses Repository
 
 This repository contains code for population genomic analyses of the spoon-billed sandpiper and red-necked stint genomes.
@@ -23,7 +20,3 @@ Two analysis pipelines are included in this repository:
 
 Each pipeline directory contains a `README` file with detailed instructions and descriptions.
 
----
-```
-
-Let me know if you’d like any additional changes!
