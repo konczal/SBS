@@ -1,7 +1,7 @@
-Scripts used to call and filter SNPs using an original bcftools pipeline. The scrits were run on the institutional cluster with qsub system.
+Scripts used to call and filter SNPs using an original bcftools pipeline. The scrits were run on the institutional cluster with qsub system. Please note that most of the scripts utilize local paths and modules specific to the cluster. 
 
 #SHELL SCRIPTS USED TO MAP READS TO THE REFERENCE GENOME
-00_fastq2finalBAM.sh      - script used to trim and map sequening reads to the reference genome 
+00_fastq2finalBAM.sh      - script used to trim and map sequening reads to the reference genome. To run the scripts individual id, fastq_r1, fast1_r2, reference genome and bowtie2 seq reference need to be provided.
 
 #SHELL SCRIPTS USED TO CALL SNPS AND FILTER THEM 
 01_SNP_calling_wraper.sh  - defines all required files, some parameters and runs in parallel SNP calling in windows along the genome
