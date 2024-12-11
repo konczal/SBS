@@ -1,9 +1,29 @@
-This is a reposity of code used for population genomic analyses of the spoon-billed sandpiper and red-necked stint genomes. 
+Here’s the improved version formatted in Markdown:
 
-Data required for the analyses: reference genome and its annotation can be found in the 00_Data directory. 
+```markdown
+# Population Genomic Analyses Repository
 
-Slighly improved version of the reference genome is now also available at the NCBI (NCBI assembly: ASM369795v1), together with all the sequenicing reads used for the analyses (under the NCBI Bioproject PRJNA419629).
+This repository contains code for population genomic analyses of the spoon-billed sandpiper and red-necked stint genomes.
 
-There are two pipelines provided: one based on the bcftools (01_snps directory) and the other based on the genotype likelihoods calculated with angsd (02_angsd direcotry). 
+## Data for the Analyses
 
-Each directory descring a pipeline includes separeate README file with detailed description.   
+- The required data, including the reference genome and its annotation, are available in the `00_Data` directory.
+- An improved version of the reference genome is also available on [NCBI](https://www.ncbi.nlm.nih.gov/) (NCBI assembly: **ASM369795v1**), along with all sequencing reads used in the analyses (under the [NCBI Bioproject **PRJNA419629**](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA419629)).
+
+## Provided Pipelines
+
+Two analysis pipelines are included in this repository:
+
+1. **BCFtools Pipeline**  
+   Location: `01_snps` directory.
+
+2. **ANGSD Pipeline**  
+   Location: `02_angsd` directory.  
+   Based on genotype likelihoods calculated with ANGSD.
+
+Each pipeline directory contains a `README` file with detailed instructions and descriptions.
+
+---
+```
+
+Let me know if you’d like any additional changes!
